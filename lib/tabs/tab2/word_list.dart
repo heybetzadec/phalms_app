@@ -24,10 +24,14 @@ class _WordListState extends State<WordList> {
 
   @override
   void initState() {
+    var where = ";";
+    if(letterId!=0){
+      where = "WHERE letter_id = $letterId;";
+    }
     routeBus.dbf.then((db) {
       db
           .rawQuery(
-          "SELECT firstline_id, firstline_name, chapter_id, verse_id  FROM firstline WHERE letter_id = $letterId;")
+          "SELECT firstline_id, firstline_name, chapter_id, verse_id  FROM firstline $where")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -70,7 +74,8 @@ class _WordListState extends State<WordList> {
                   );
                 },
                 child: ListTile(
-                  title: Text('${itemValue[0]}. ${itemValue[1]} Paslm ${itemValue[2]}${!itemValue[3].toString().isEmpty ? ":"+itemValue[3].toString() : ""}'),
+                  title: Text(' ${itemValue[1]}'),
+                  trailing: Text('Paslm ${itemValue[2]}. ${Const.removeIfNull(itemValue[3])}'),
                 ),
               ),
 //                color: Colors.transparent,

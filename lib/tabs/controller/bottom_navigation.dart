@@ -51,6 +51,8 @@ class BottomNavigation extends StatelessWidget {
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       type: BottomNavigationBarType.fixed,
+//      elevation: 4,
+//      fixedColor: Theme.of(context).primaryIconTheme.color,
       items: [
         _buildItem(tabItem: TabItem.chapter),
         _buildItem(tabItem: TabItem.words),

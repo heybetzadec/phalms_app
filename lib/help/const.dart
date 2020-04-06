@@ -44,6 +44,14 @@ class Const {
   static const String itemImageUrl =
       "http://5.189.153.175:2706/service/dicts/screenMenuItem/image?path=";
 
+  static String removeIfNull(dynamic element){
+    if(element != null){
+      return element.toString();
+    } else {
+      return "";
+    }
+  }
+
   static String formatHHMMSS(int seconds) {
     int hours = (seconds / 3600).truncate();
     seconds = (seconds % 3600).truncate();
@@ -71,25 +79,6 @@ class Const {
       );
     }
   }
-
-//  static String capitalize(String s) => s[0].toUpperCase() + s.substring(1).toLowerCase();
-//
-//  static ImageProvider getImgItem(String urlPath, String otherPath, String notImg){
-//    if(urlPath==null){
-//      if(otherPath == null){
-//        return AssetImage("assets/img/${notImg}");
-//      } else {
-//        return NetworkImage(
-//          '${Const.itemImageUrl}${otherPath}',
-//        );
-//      }
-////      return AssetImage("assets/img/${notImg}");
-//    } else {
-//      return NetworkImage(
-//        '${Const.itemImageUrl}${urlPath}',
-//      );
-//    }
-//  }
 
 }
 

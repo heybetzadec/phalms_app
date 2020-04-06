@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/route_bus.dart';
-import 'package:phalmsapp/tabs/controller/anchored_overlay.dart';
-import 'package:phalmsapp/tabs/controller/fab_withIcons.dart';
 
 class VerseList extends StatefulWidget {
   final RouteBus routeBus;
@@ -57,11 +57,21 @@ class _VerseListState extends State<VerseList> {
               ),
               elevation: 1,
               child: new InkWell(
-                onTap: () {
-                  print('on tap');
+                onLongPress: (){
+//                  print('${itemValue.last} - Psalm ${chapterId}:${itemValue.first}');
+                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
+                  Fluttertoast.showToast(
+                      msg: "Copied Psalm $chapterId:${itemValue.first}",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.black45,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                 },
                 child: ListTile(
-                  title: Text('${itemValue.first}. ${itemValue.last}'),
+                  title: Text('${itemValue.first} ${itemValue.last}'),
                 ),
               ),
 //                color: Colors.transparent,
@@ -69,33 +79,8 @@ class _VerseListState extends State<VerseList> {
           },
         ),
       ),
-      floatingActionButton: _buildFab(context)
     );
   }
 
-
-  Widget _buildFab(BuildContext context) {
-    final icons = [ Icons.sms, Icons.mail, Icons.phone ];
-    return AnchoredOverlay(
-      showOverlay: true,
-      overlayBuilder: (context, offset) {
-        return CenterAbout(
-          position: Offset(offset.dx, offset.dy - icons.length * 35.0),
-          child: FabWithIcons(
-            icons: icons,
-            onIconTapped: (value){
-              print('tapped $value');
-            },
-          ),
-        );
-      },
-      child: FloatingActionButton(
-        onPressed: () { },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-        elevation: 2.0,
-      ),
-    );
-  }
 
 }

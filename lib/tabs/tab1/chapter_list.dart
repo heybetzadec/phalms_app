@@ -193,8 +193,8 @@ class _ChapterListState extends State<ChapterList> {
           });
     } else {
       return Icon(
-        Icons.search,
-        size: 40,
+        Icons.list,
+        size: 30,
         color: Colors.black26,
       );
     }

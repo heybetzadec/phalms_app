@@ -18,14 +18,16 @@ class _LetterListState extends State<LetterList> {
 
   _LetterListState(this.routeBus);
 
-  var dataList = new List<Map<String, dynamic>>();
+  List<Map<String, dynamic>> dataList;
 
   @override
   void initState() {
+    dataList = new List<Map<String, dynamic>>();
+    dataList.add( {'letter_id': 0, 'letter_name': 'All'});
     routeBus.dbf.then((db) {
       db.rawQuery("SELECT letter_id, letter_name  FROM letter;").then((value) {
         setState(() {
-          dataList = value.toList();
+          dataList.addAll(value);
         });
       });
     });
