@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 
@@ -55,11 +57,20 @@ class _VersesByThemeState extends State<VersesByTheme> {
               ),
               elevation: 1,
               child: new InkWell(
-                onTap: () {
-                  print('on tap');
+                onLongPress: (){
+                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
+                  Fluttertoast.showToast(
+                      msg: "Copied Psalm $chapterId:${itemValue.first}",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.black45,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                 },
                 child: ListTile(
-                  title: Text('${itemValue.first}:${itemValue[1]}. ${itemValue.last}'),
+                  title: Text('${itemValue.first}. ${itemValue[1]}. ${itemValue.last}'),
                 ),
               ),
             );

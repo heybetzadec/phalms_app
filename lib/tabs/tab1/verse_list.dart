@@ -58,7 +58,6 @@ class _VerseListState extends State<VerseList> {
               elevation: 1,
               child: new InkWell(
                 onLongPress: (){
-//                  print('${itemValue.last} - Psalm ${chapterId}:${itemValue.first}');
                   Clipboard.setData(new ClipboardData(text: '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
                   Fluttertoast.showToast(
                       msg: "Copied Psalm $chapterId:${itemValue.first}",

@@ -20,11 +20,6 @@ class TabPages extends StatelessWidget {
 
   Widget widgetTab;
 
-//  _buildItem(tabItem: TabItem.chapter),
-//  _buildItem(tabItem: TabItem.words),
-//  _buildItem(tabItem: TabItem.theme),
-//  _buildItem(tabItem: TabItem.names),
-//  _buildItem(tabItem: TabItem.other),
 
   @override
   Widget build(BuildContext context) {

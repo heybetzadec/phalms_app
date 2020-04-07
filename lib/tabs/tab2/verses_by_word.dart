@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 
@@ -15,10 +17,10 @@ class VersesByWord extends StatefulWidget {
 
 class _VersesByWordState extends State<VersesByWord> {
   final RouteBus routeBus;
-  final int chapretId;
+  final int chapterId;
   final int verseId;
 
-  _VersesByWordState(this.routeBus, this.chapretId, this.verseId);
+  _VersesByWordState(this.routeBus, this.chapterId, this.verseId);
 
   var dataList = new List<Map<String, dynamic>>();
 
@@ -27,7 +29,7 @@ class _VersesByWordState extends State<VersesByWord> {
     routeBus.dbf.then((db) {
       db
           .rawQuery(
-          "SELECT verse_id, text  FROM verse WHERE chapter_id=$chapretId;")
+          "SELECT verse_id, text  FROM verse WHERE chapter_id=$chapterId;")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -58,8 +60,17 @@ class _VersesByWordState extends State<VersesByWord> {
               ),
               elevation: 1,
               child: new InkWell(
-                onTap: () {
-                  print('on tap');
+                onLongPress: (){
+                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
+                  Fluttertoast.showToast(
+                      msg: "Copied Psalm $chapterId:${itemValue.first}",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.black45,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                 },
                 child: ListTile(
                   title: Text('${itemValue.first}. ${itemValue.last}'),

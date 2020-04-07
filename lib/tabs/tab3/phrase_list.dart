@@ -70,7 +70,7 @@ class _PhraseListState extends State<PhraseList> {
                   );
                 },
                 child: ListTile(
-                  title: Text('${itemValue.first}'),
+                  title: Text('Psalm ${itemValue.first}'),
                 ),
               ),
 //                color: Colors.transparent,

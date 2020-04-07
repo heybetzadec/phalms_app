@@ -37,21 +37,6 @@ class TabNavigator extends StatelessWidget {
       TabNavigatorRoutes.detail: (context) => forRoute.widget,
     };
 
-//    return {
-//      TabNavigatorRoutes.root: (context) {
-//        return ListPage(
-//          color: activeTabColor[tabItem],
-//          title: tabName[tabItem],
-//          onPush: (materialIndex) =>
-//              _push(context, materialIndex: materialIndex),
-//        );
-//      },
-//      TabNavigatorRoutes.detail: (context) => DetailPage(
-//        color: activeTabColor[tabItem],
-//        title: tabName[tabItem],
-//        materialIndex: materialIndex,
-//      ),
-//    };
   }
 
   @override
