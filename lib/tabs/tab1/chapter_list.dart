@@ -83,7 +83,7 @@ class _ChapterListState extends State<ChapterList> {
 
     return Scaffold(
       appBar: BaseAppBar(
-        title: Translations.of(context).text("chapters"),
+        title: Translations.of(context).text("psalms"),
         appBar: AppBar(),
       ),
       body: CustomScrollView(
@@ -117,7 +117,7 @@ class _ChapterListState extends State<ChapterList> {
                   });
                 },
                 decoration: InputDecoration(
-                    hintText: 'Səhifədə axtar...',
+                    hintText: Translations.of(context).text("page_search"),
                     contentPadding: EdgeInsets.all(15),
                     suffixIcon: getSearchSuffix(searchFocus),
                     enabledBorder: const UnderlineInputBorder(
@@ -156,7 +156,7 @@ class _ChapterListState extends State<ChapterList> {
                     },
                     child: ListTile(
                       title: Text(
-                        'Psalm ${itemValue.first}',
+                        '${Translations.of(context).text("psalm")} ${itemValue.first}',
                         style: TextStyle(
                             fontSize: 18
                         ),

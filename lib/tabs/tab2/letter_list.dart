@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/route_bus.dart';
+import 'package:phalmsapp/help/translations.dart';
 import 'package:phalmsapp/tabs/tab2/word_list.dart';
 
 class LetterList extends StatefulWidget {
@@ -38,7 +39,7 @@ class _LetterListState extends State<LetterList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: 'Sura',
+        title: Translations.of(context).text("words"),
         appBar: AppBar(),
       ),
       body: Container(

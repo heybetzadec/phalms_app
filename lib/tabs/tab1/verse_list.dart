@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/route_bus.dart';
+import 'package:phalmsapp/help/translations.dart';
 
 class VerseList extends StatefulWidget {
   final RouteBus routeBus;
@@ -41,7 +42,7 @@ class _VerseListState extends State<VerseList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
-        title: 'Sura',
+        title: Translations.of(context).text("verses"),
         appBar: AppBar(),
       ),
       body: Container(
@@ -58,9 +59,9 @@ class _VerseListState extends State<VerseList> {
               elevation: 1,
               child: new InkWell(
                 onLongPress: (){
-                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
+                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - ${Translations.of(context).text("verse")} $chapterId:${itemValue.first}'));
                   Fluttertoast.showToast(
-                      msg: "Copied Psalm $chapterId:${itemValue.first}",
+                      msg: "${Translations.of(context).text("copied_psalm")} $chapterId:${itemValue.first}",
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,

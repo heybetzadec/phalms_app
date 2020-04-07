@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 import 'package:phalmsapp/help/translations.dart';
 import 'package:tinycolor/tinycolor.dart';
@@ -22,14 +23,6 @@ Map<TabItem, IconData> tabIcons = {
   TabItem.other: FontAwesomeIcons.cog,
 };
 
-Map<TabItem, MaterialColor> activeTabColor = {
-  TabItem.chapter: Colors.teal,
-  TabItem.words: Colors.teal,
-  TabItem.theme: Colors.teal,
-  TabItem.names: Colors.teal,
-  TabItem.other: Colors.teal,
-};
-
 class BottomNavigation extends StatelessWidget {
   final TabItem currentTab;
   final ValueChanged<TabItem> onSelectTab;
@@ -41,18 +34,16 @@ class BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     tabName = {
-      TabItem.chapter: Translations.of(context).text("chapters"),
-      TabItem.words: Translations.of(context).text("words"),
-      TabItem.theme: Translations.of(context).text("themes"),
-      TabItem.names: Translations.of(context).text("names"),
+      TabItem.chapter: Translations.of(context).text("psalms"),
+      TabItem.words: Translations.of(context).text("word"),
+      TabItem.theme: Translations.of(context).text("theme"),
+      TabItem.names: Translations.of(context).text("doc"),
       TabItem.other: Translations.of(context).text("other"),
     };
 
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       type: BottomNavigationBarType.fixed,
-//      elevation: 4,
-//      fixedColor: Theme.of(context).primaryIconTheme.color,
       items: [
         _buildItem(tabItem: TabItem.chapter),
         _buildItem(tabItem: TabItem.words),
@@ -85,6 +76,6 @@ class BottomNavigation extends StatelessWidget {
   }
 
   Color _colorTabMatching({TabItem item}) {
-    return currentTab == item ? activeTabColor[item] : Colors.grey;
+    return currentTab == item ? Const.primaryColor : Colors.grey;
   }
 }

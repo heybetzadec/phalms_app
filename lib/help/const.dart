@@ -12,7 +12,7 @@ class Const {
   static const String MACADDR = '0C:98:38:FA:9F:FD';
   static const String IND = '2';
 
-  static const Color primaryColor = Colors.blue;
+  static const Color primaryColor = Colors.deepPurple;
   static const Color activeColor = Colors.black;
   static const Color appBackgroundColor = Colors.white;
   static const Color appBarTextColor = Colors.black;

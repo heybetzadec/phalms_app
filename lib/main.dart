@@ -1,5 +1,6 @@
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
+import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/event_key.dart';
 import 'package:phalmsapp/help/translations.dart';
 import 'package:phalmsapp/help/locale_util.dart';
@@ -56,7 +57,7 @@ class _MainState extends State<Main> {
         return locale;
       },
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Const.primaryColor,
       ),
       home: App(),
     );

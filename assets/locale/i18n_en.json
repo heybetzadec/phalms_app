@@ -1,7 +1,14 @@
 {
-  "chapters":"Psalms",
-  "words": "First Word",
-  "themes": "Theme",
-  "names": "Docs",
-  "other": "Other"
+  "psalm": "Psalm",
+  "psalms":"Psalms",
+  "word": "First Line",
+  "theme": "Theme",
+  "doc": "Docs",
+  "other": "Other",
+  "search": "Search",
+  "page_search": "Search in page...",
+  "all": "All",
+  "verses": "Verses",
+  "words": "First Line in Latin",
+  "copied_psalm": "Copied! Psalm"
 }

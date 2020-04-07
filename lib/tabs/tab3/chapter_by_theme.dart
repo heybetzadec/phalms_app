@@ -2,24 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/route_bus.dart';
+import 'package:phalmsapp/help/translations.dart';
 import 'package:phalmsapp/tabs/tab3/verses_by_theme.dart';
 import 'package:tinycolor/tinycolor.dart';
 
-class PhraseList extends StatefulWidget {
+class ChapterByTheme extends StatefulWidget {
   final RouteBus routeBus;
   final int themeId;
 
-  PhraseList({Key key, this.routeBus, this.themeId}) : super(key: key);
+  ChapterByTheme({Key key, this.routeBus, this.themeId}) : super(key: key);
 
   @override
-  _PhraseListState createState() => _PhraseListState(routeBus, themeId);
+  _ChapterByThemeState createState() => _ChapterByThemeState(routeBus, themeId);
 }
 
-class _PhraseListState extends State<PhraseList> {
+class _ChapterByThemeState extends State<ChapterByTheme> {
   final RouteBus routeBus;
   final int themeId;
 
-  _PhraseListState(this.routeBus, this.themeId);
+  _ChapterByThemeState(this.routeBus, this.themeId);
 
   var dataList = new List<Map<String, dynamic>>();
 
@@ -70,7 +71,7 @@ class _PhraseListState extends State<PhraseList> {
                   );
                 },
                 child: ListTile(
-                  title: Text('Psalm ${itemValue.first}'),
+                  title: Text('${Translations.of(context).text("psalm")} ${itemValue.first}'),
                 ),
               ),
 //                color: Colors.transparent,

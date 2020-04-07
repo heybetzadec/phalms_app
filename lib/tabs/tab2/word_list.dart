@@ -4,6 +4,7 @@ import 'package:phalmsapp/help/base_app_bar.dart';
 import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/event_key.dart';
 import 'package:phalmsapp/help/route_bus.dart';
+import 'package:phalmsapp/help/translations.dart';
 import 'package:phalmsapp/tabs/tab2/verses_by_word.dart';
 
 class WordList extends StatefulWidget {
@@ -89,7 +90,7 @@ class _WordListState extends State<WordList> {
 
     return Scaffold(
       appBar: BaseAppBar(
-        title: 'Sura',
+        title: Translations.of(context).text("words"),
         appBar: AppBar(),
       ),
       body: CustomScrollView(
@@ -123,7 +124,7 @@ class _WordListState extends State<WordList> {
                   });
                 },
                 decoration: InputDecoration(
-                    hintText: 'Səhifədə axtar...',
+                    hintText: Translations.of(context).text("page_search"),
                     contentPadding: EdgeInsets.all(15),
                     suffixIcon: getSearchSuffix(searchFocus),
                     enabledBorder: const UnderlineInputBorder(
@@ -165,7 +166,7 @@ class _WordListState extends State<WordList> {
                     },
                     child: ListTile(
                       title: Text(' ${itemValue[1]}'),
-                      trailing: Text('Paslm ${itemValue[2]}. ${Const.removeIfNull(itemValue[3])}'),
+                      trailing: Text('${Translations.of(context).text("psalm")} ${itemValue[2]}. ${Const.removeIfNull(itemValue[3])}'),
                     ),
                   ),
                 );
