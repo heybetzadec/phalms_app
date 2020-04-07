@@ -4,7 +4,6 @@ import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 import 'package:phalmsapp/help/translations.dart';
 import 'package:phalmsapp/tabs/tab3/verses_by_theme.dart';
-import 'package:tinycolor/tinycolor.dart';
 
 class ChapterByTheme extends StatefulWidget {
   final RouteBus routeBus;
@@ -29,7 +28,7 @@ class _ChapterByThemeState extends State<ChapterByTheme> {
     routeBus.dbf.then((db) {
       db
           .rawQuery(
-          "SELECT chapter_id  FROM theme_chapter WHERE theme_id = $themeId;")
+              "SELECT chapter_id  FROM theme_chapter WHERE theme_id = $themeId;")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -41,7 +40,6 @@ class _ChapterByThemeState extends State<ChapterByTheme> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: BaseAppBar(
         title: 'Sura',
@@ -61,17 +59,16 @@ class _ChapterByThemeState extends State<ChapterByTheme> {
               elevation: 1,
               child: new InkWell(
                 onTap: () {
-                  Navigator.of(context).push(
-                      Const.customRoute((context) {
-                        return VersesByTheme(
-                          routeBus: routeBus,
-                          chapterId: itemValue.first,
-                        );
-                      })
-                  );
+                  Navigator.of(context).push(Const.customRoute((context) {
+                    return VersesByTheme(
+                      routeBus: routeBus,
+                      chapterId: itemValue.first,
+                    );
+                  }));
                 },
                 child: ListTile(
-                  title: Text('${Translations.of(context).text("psalm")} ${itemValue.first}'),
+                  title: Text(
+                      '${Translations.of(context).text("psalm")} ${itemValue.first}'),
                 ),
               ),
 //                color: Colors.transparent,
@@ -80,6 +77,5 @@ class _ChapterByThemeState extends State<ChapterByTheme> {
         ),
       ),
     );
-
   }
 }

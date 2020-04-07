@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -44,8 +43,8 @@ class Const {
   static const String itemImageUrl =
       "http://5.189.153.175:2706/service/dicts/screenMenuItem/image?path=";
 
-  static String removeIfNull(dynamic element){
-    if(element != null){
+  static String removeIfNull(dynamic element) {
+    if (element != null) {
       return element.toString();
     } else {
       return "";
@@ -79,8 +78,6 @@ class Const {
       );
     }
   }
-
-
 }
 
 const MaterialColor white = const MaterialColor(

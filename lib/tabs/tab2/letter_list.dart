@@ -24,7 +24,7 @@ class _LetterListState extends State<LetterList> {
   @override
   void initState() {
     dataList = new List<Map<String, dynamic>>();
-    dataList.add( {'letter_id': 0, 'letter_name': 'All'});
+    dataList.add({'letter_id': 0, 'letter_name': 'All'});
     routeBus.dbf.then((db) {
       db.rawQuery("SELECT letter_id, letter_name  FROM letter;").then((value) {
         setState(() {
@@ -43,34 +43,25 @@ class _LetterListState extends State<LetterList> {
         appBar: AppBar(),
       ),
       body: Container(
-        margin: EdgeInsets.only(
-            top: 2
-        ),
+        margin: EdgeInsets.only(top: 2),
         child: ListView.builder(
           itemCount: dataList.length,
           itemBuilder: (context, index) {
             var itemValue = dataList[index].values;
             return new Card(
-              margin: EdgeInsets.only(
-                  left: 0,
-                  right: 0,
-                  top: 0,
-                  bottom: 1
-              ),
+              margin: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(0)),
               ),
               elevation: 1,
               child: new InkWell(
-                onTap: (){
-                  Navigator.of(context).push(
-                      Const.customRoute((context) {
-                        return WordList(
-                          routeBus: routeBus,
-                          letterId: itemValue.first,
-                        );
-                      })
-                  );
+                onTap: () {
+                  Navigator.of(context).push(Const.customRoute((context) {
+                    return WordList(
+                      routeBus: routeBus,
+                      letterId: itemValue.first,
+                    );
+                  }));
                 },
                 child: ListTile(
                   title: Text(' ${itemValue.last}'),
@@ -86,6 +77,5 @@ class _LetterListState extends State<LetterList> {
         ),
       ),
     );
-
   }
 }

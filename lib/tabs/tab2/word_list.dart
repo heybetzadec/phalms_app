@@ -36,15 +36,14 @@ class _WordListState extends State<WordList> {
     searchFocusNode = FocusNode();
     scrollController = ScrollController();
 
-
     var where = ";";
-    if(letterId!=0){
+    if (letterId != 0) {
       where = "WHERE letter_id = $letterId;";
     }
     routeBus.dbf.then((db) {
       db
           .rawQuery(
-          "SELECT firstline_id, firstline_name, chapter_id, verse_id  FROM firstline $where")
+              "SELECT firstline_id, firstline_name, chapter_id, verse_id  FROM firstline $where")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -71,7 +70,6 @@ class _WordListState extends State<WordList> {
     super.initState();
   }
 
-
   @override
   void dispose() {
     searchFocusNode.dispose();
@@ -80,13 +78,11 @@ class _WordListState extends State<WordList> {
 
   @override
   Widget build(BuildContext context) {
-
     searchFocusNode.addListener(() {
       setState(() {
         searchFocus = searchFocusNode.hasFocus;
       });
     });
-
 
     return Scaffold(
       appBar: BaseAppBar(
@@ -114,7 +110,8 @@ class _WordListState extends State<WordList> {
                   var searched = new List<Map<String, dynamic>>();
                   setState(() {
                     searched.addAll(dataList.where((element) {
-                      String item = element.values.toList()[1].toString().toLowerCase();
+                      String item =
+                          element.values.toList()[1].toString().toLowerCase();
                       value = value.toLowerCase();
                       return item.contains(value);
                     }));
@@ -129,7 +126,7 @@ class _WordListState extends State<WordList> {
                     suffixIcon: getSearchSuffix(searchFocus),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide:
-                      const BorderSide(color: Colors.grey, width: 0.0),
+                          const BorderSide(color: Colors.grey, width: 0.0),
                     ),
                     fillColor: Colors.red),
               ),
@@ -137,11 +134,10 @@ class _WordListState extends State<WordList> {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (context, index) {
+              (context, index) {
                 var itemValue = searchList[index].values.toList();
                 return new Card(
-                  margin:
-                  EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
+                  margin: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
                   ),
@@ -149,15 +145,13 @@ class _WordListState extends State<WordList> {
                   child: new InkWell(
                     onTap: () {
                       searchFocusNode.unfocus();
-                      Navigator.of(context).push(
-                          Const.customRoute((context) {
-                            return VersesByWord(
-                              routeBus: routeBus,
-                              chapterId: itemValue[2],
-                              verseId: itemValue[3],
-                            );
-                          })
-                      ).then((value) {
+                      Navigator.of(context).push(Const.customRoute((context) {
+                        return VersesByWord(
+                          routeBus: routeBus,
+                          chapterId: itemValue[2],
+                          verseId: itemValue[3],
+                        );
+                      })).then((value) {
                         searchController.clear();
                         setState(() {
                           searchList = dataList;
@@ -166,7 +160,8 @@ class _WordListState extends State<WordList> {
                     },
                     child: ListTile(
                       title: Text(' ${itemValue[1]}'),
-                      trailing: Text('${Translations.of(context).text("psalm")} ${itemValue[2]}. ${Const.removeIfNull(itemValue[3])}'),
+                      trailing: Text(
+                          '${Translations.of(context).text("psalm")} ${itemValue[2]}. ${Const.removeIfNull(itemValue[3])}'),
                     ),
                   ),
                 );
@@ -177,9 +172,7 @@ class _WordListState extends State<WordList> {
         ],
       ),
     );
-
   }
-
 
   getSearchSuffix(bool isFocus) {
     if (isFocus) {
@@ -203,5 +196,4 @@ class _WordListState extends State<WordList> {
       );
     }
   }
-
 }

@@ -1,4 +1,3 @@
-import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/route_bus.dart';
@@ -16,6 +15,7 @@ class TabNavigator extends StatelessWidget {
 
   final GlobalKey<NavigatorState> navigatorKey;
   final TabItem tabItem;
+
 //  final EventBus eventBus;
   final RouteBus routeBus;
 
@@ -36,7 +36,6 @@ class TabNavigator extends StatelessWidget {
           ),
       TabNavigatorRoutes.detail: (context) => forRoute.widget,
     };
-
   }
 
   @override

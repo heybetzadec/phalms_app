@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:phalmsapp/help/locale_util.dart';
@@ -58,7 +59,6 @@ class Translations {
 //  Map<dynamic, dynamic>all(){
 //    return _localizedValues;
 //  }
-
 
   static Future<Translations> load(Locale locale) async {
     Translations translations = new Translations(locale);

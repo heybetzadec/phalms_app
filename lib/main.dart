@@ -1,24 +1,19 @@
-import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
-import 'package:phalmsapp/help/const.dart';
-import 'package:phalmsapp/help/event_key.dart';
-import 'package:phalmsapp/help/translations.dart';
-import 'package:phalmsapp/help/locale_util.dart';
-import 'package:phalmsapp/tabs/controller/app.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:phalmsapp/help/const.dart';
+import 'package:phalmsapp/help/locale_util.dart';
+import 'package:phalmsapp/help/translations.dart';
+import 'package:phalmsapp/tabs/controller/app.dart';
 
 void main() {
   runApp(Main());
 }
 
-
 class Main extends StatefulWidget {
-
   Main({Key key}) : super(key: key);
 
   static void setLocale(BuildContext context, Locale newLocale) async {
-    _MainState state =
-    context.findAncestorStateOfType<_MainState>();
+    _MainState state = context.findAncestorStateOfType<_MainState>();
     state.changeLanguage(newLocale);
   }
 
@@ -50,7 +45,8 @@ class _MainState extends State<Main> {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
       ],
-      locale: _locale,//Locale('az'),
+      locale: _locale,
+      //Locale('az'),
       supportedLocales: localeUtil.supportedLocales(),
       localeResolutionCallback:
           (Locale locale, Iterable<Locale> supportedLocales) {

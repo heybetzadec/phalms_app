@@ -10,10 +10,12 @@ class VersesByWord extends StatefulWidget {
   final int chapterId;
   final int verseId;
 
-  VersesByWord({Key key, this.routeBus, this.chapterId, this.verseId}) : super(key: key);
+  VersesByWord({Key key, this.routeBus, this.chapterId, this.verseId})
+      : super(key: key);
 
   @override
-  _VersesByWordState createState() => _VersesByWordState(routeBus, chapterId, verseId);
+  _VersesByWordState createState() =>
+      _VersesByWordState(routeBus, chapterId, verseId);
 }
 
 class _VersesByWordState extends State<VersesByWord> {
@@ -30,7 +32,7 @@ class _VersesByWordState extends State<VersesByWord> {
     routeBus.dbf.then((db) {
       db
           .rawQuery(
-          "SELECT verse_id, text  FROM verse WHERE chapter_id=$chapterId;")
+              "SELECT verse_id, text  FROM verse WHERE chapter_id=$chapterId;")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -42,7 +44,6 @@ class _VersesByWordState extends State<VersesByWord> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: BaseAppBar(
         title: Translations.of(context).text("psalms"),
@@ -61,17 +62,19 @@ class _VersesByWordState extends State<VersesByWord> {
               ),
               elevation: 1,
               child: new InkWell(
-                onLongPress: (){
-                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - ${Translations.of(context).text("psalm")} $chapterId:${itemValue.first}'));
+                onLongPress: () {
+                  Clipboard.setData(new ClipboardData(
+                      text:
+                          '${itemValue.last} - ${Translations.of(context).text("psalm")} $chapterId:${itemValue.first}'));
                   Fluttertoast.showToast(
-                      msg: "${Translations.of(context).text("copied_psalm")} $chapterId:${itemValue.first}",
+                      msg:
+                          "${Translations.of(context).text("copied_psalm")} $chapterId:${itemValue.first}",
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
                       backgroundColor: Colors.black45,
                       textColor: Colors.white,
-                      fontSize: 16.0
-                  );
+                      fontSize: 16.0);
                 },
                 child: ListTile(
                   title: Text('${itemValue.first}. ${itemValue.last}'),
@@ -82,6 +85,5 @@ class _VersesByWordState extends State<VersesByWord> {
         ),
       ),
     );
-
   }
 }

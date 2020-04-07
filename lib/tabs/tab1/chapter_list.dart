@@ -37,8 +37,7 @@ class _ChapterListState extends State<ChapterList> {
 
     routeBus.dbf.then((db) {
       db
-          .rawQuery(
-              "SELECT chapter_id  FROM verse GROUP BY chapter_id; ")
+          .rawQuery("SELECT chapter_id  FROM verse GROUP BY chapter_id; ")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -106,8 +105,12 @@ class _ChapterListState extends State<ChapterList> {
                   var searched = new List<Map<String, dynamic>>();
                   setState(() {
                     searched.addAll(dataList.where((element) {
-                      String item = element.values.last.toString().toLowerCase();
-                      value = value.toLowerCase().replaceAll("[^0-9.]", "").replaceAll(new RegExp('[^0-9.]'),'');
+                      String item =
+                          element.values.last.toString().toLowerCase();
+                      value = value
+                          .toLowerCase()
+                          .replaceAll("[^0-9.]", "")
+                          .replaceAll(new RegExp('[^0-9.]'), '');
                       print(value);
                       return item.contains(value);
                     }));
@@ -122,7 +125,7 @@ class _ChapterListState extends State<ChapterList> {
                     suffixIcon: getSearchSuffix(searchFocus),
                     enabledBorder: const UnderlineInputBorder(
                       borderSide:
-                      const BorderSide(color: Colors.grey, width: 0.0),
+                          const BorderSide(color: Colors.grey, width: 0.0),
                     ),
                     fillColor: Colors.red),
               ),
@@ -130,11 +133,10 @@ class _ChapterListState extends State<ChapterList> {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-                  (context, index) {
+              (context, index) {
                 var itemValue = searchList[index].values;
                 return new Card(
-                  margin:
-                  EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
+                  margin: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(0)),
                   ),
@@ -157,9 +159,7 @@ class _ChapterListState extends State<ChapterList> {
                     child: ListTile(
                       title: Text(
                         '${Translations.of(context).text("psalm")} ${itemValue.first}',
-                        style: TextStyle(
-                            fontSize: 18
-                        ),
+                        style: TextStyle(fontSize: 18),
                       ),
                       trailing: Icon(
                         Icons.arrow_forward_ios,
@@ -199,5 +199,4 @@ class _ChapterListState extends State<ChapterList> {
       );
     }
   }
-
 }

@@ -49,7 +49,6 @@ class _NameListState extends State<NameList> {
           ),
 
           //Must have useRichText set to false for this to work.
-
         ),
       ),
     );

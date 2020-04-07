@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:path/path.dart';
 import 'package:phalmsapp/help/event_key.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 import 'package:phalmsapp/tabs/controller/bottom_navigation.dart';
 import 'package:phalmsapp/tabs/controller/tab_navigator.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
-import 'package:flutter/services.dart';
 
 class App extends StatefulWidget {
   @override
@@ -34,13 +34,11 @@ class AppState extends State<App> {
     routeBus = new RouteBus(
         eventBus: eventBus,
         dbf: dbf,
-      languageId: 1,
-      translationId: 121,
-      languageCode: 'az'
-    );
+        languageId: 1,
+        translationId: 121,
+        languageCode: 'az');
     super.initState();
   }
-
 
   void _selectTab(TabItem tabItem) {
     switch (tabItem) {
@@ -136,11 +134,10 @@ class AppState extends State<App> {
       // Copy from asset
       ByteData data = await rootBundle.load(join("assets", "phalms_data.db"));
       List<int> bytes =
-      data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
       // Write and flush the bytes written
       await File(path).writeAsBytes(bytes, flush: true);
-
     } else {
       print("Opening existing database");
     }
@@ -156,11 +153,9 @@ class AppState extends State<App> {
       offstage: _currentTab != tabItem,
       child: TabNavigator(
         navigatorKey: _navigatorKeys[tabItem],
-        routeBus:routeBus,
+        routeBus: routeBus,
         tabItem: tabItem,
       ),
     );
   }
-
-
 }

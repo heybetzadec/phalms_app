@@ -21,19 +21,18 @@ class _OtherState extends State<Other> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: Center(
           child: MaterialButton(
-              onPressed: (){
-                Locale newLocale = Locale('tr', 'TR');
-                Main.setLocale(context, newLocale);
-              },
+            onPressed: () {
+              Locale newLocale = Locale('tr', 'TR');
+              Main.setLocale(context, newLocale);
+            },
             child: Text('Dil deyis'),
-              ),
+          ),
         ),
       ),
     );

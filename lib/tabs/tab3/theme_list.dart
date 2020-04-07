@@ -29,7 +29,6 @@ class _ThemeListState extends State<ThemeList> {
   bool searchFocus = false;
   ScrollController scrollController;
 
-
   @override
   void initState() {
     searchFocusNode = FocusNode();
@@ -64,7 +63,6 @@ class _ThemeListState extends State<ThemeList> {
     super.initState();
   }
 
-
   @override
   void dispose() {
     searchFocusNode.dispose();
@@ -73,13 +71,11 @@ class _ThemeListState extends State<ThemeList> {
 
   @override
   Widget build(BuildContext context) {
-
     searchFocusNode.addListener(() {
       setState(() {
         searchFocus = searchFocusNode.hasFocus;
       });
     });
-
 
     return Scaffold(
       appBar: BaseAppBar(
@@ -87,9 +83,7 @@ class _ThemeListState extends State<ThemeList> {
         appBar: AppBar(),
       ),
       body: Container(
-        margin: EdgeInsets.only(
-            top: 2
-        ),
+        margin: EdgeInsets.only(top: 2),
         child: CustomScrollView(
           controller: scrollController,
           slivers: <Widget>[
@@ -110,7 +104,8 @@ class _ThemeListState extends State<ThemeList> {
                     var searched = new List<Map<String, dynamic>>();
                     setState(() {
                       searched.addAll(dataList.where((element) {
-                        String item = element.values.last.toString().toLowerCase();
+                        String item =
+                            element.values.last.toString().toLowerCase();
                         value = value.toLowerCase();
                         return item.contains(value);
                       }));
@@ -125,7 +120,7 @@ class _ThemeListState extends State<ThemeList> {
                       suffixIcon: getSearchSuffix(searchFocus),
                       enabledBorder: const UnderlineInputBorder(
                         borderSide:
-                        const BorderSide(color: Colors.grey, width: 0.0),
+                            const BorderSide(color: Colors.grey, width: 0.0),
                       ),
                       fillColor: Colors.red),
                 ),
@@ -133,11 +128,11 @@ class _ThemeListState extends State<ThemeList> {
             ),
             SliverList(
               delegate: SliverChildBuilderDelegate(
-                    (context, index) {
+                (context, index) {
                   var itemValue = searchList[index].values;
                   return new Card(
                     margin:
-                    EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
+                        EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 1),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(0)),
                     ),
@@ -145,14 +140,12 @@ class _ThemeListState extends State<ThemeList> {
                     child: new InkWell(
                       onTap: () {
                         searchFocusNode.unfocus();
-                        Navigator.of(context).push(
-                            Const.customRoute((context) {
-                              return ChapterByTheme(
-                                routeBus: routeBus,
-                                themeId: itemValue.first,
-                              );
-                            })
-                        ).then((value) {
+                        Navigator.of(context).push(Const.customRoute((context) {
+                          return ChapterByTheme(
+                            routeBus: routeBus,
+                            themeId: itemValue.first,
+                          );
+                        })).then((value) {
                           searchController.clear();
                           setState(() {
                             searchList = dataList;
@@ -176,7 +169,6 @@ class _ThemeListState extends State<ThemeList> {
         ),
       ),
     );
-
   }
 
   getSearchSuffix(bool isFocus) {
@@ -201,6 +193,4 @@ class _ThemeListState extends State<ThemeList> {
       );
     }
   }
-
-
 }

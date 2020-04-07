@@ -27,7 +27,7 @@ class _VersesByThemeState extends State<VersesByTheme> {
     routeBus.dbf.then((db) {
       db
           .rawQuery(
-          "SELECT verse_id, text  FROM verse WHERE chapter_id=$chapterId;")
+              "SELECT verse_id, text  FROM verse WHERE chapter_id=$chapterId;")
           .then((value) {
         setState(() {
           dataList = value.toList();
@@ -57,8 +57,10 @@ class _VersesByThemeState extends State<VersesByTheme> {
               ),
               elevation: 1,
               child: new InkWell(
-                onLongPress: (){
-                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
+                onLongPress: () {
+                  Clipboard.setData(new ClipboardData(
+                      text:
+                          '${itemValue.last} - Psalm $chapterId:${itemValue.first}'));
                   Fluttertoast.showToast(
                       msg: "Copied Psalm $chapterId:${itemValue.first}",
                       toastLength: Toast.LENGTH_SHORT,
@@ -66,11 +68,11 @@ class _VersesByThemeState extends State<VersesByTheme> {
                       timeInSecForIosWeb: 1,
                       backgroundColor: Colors.black45,
                       textColor: Colors.white,
-                      fontSize: 16.0
-                  );
+                      fontSize: 16.0);
                 },
                 child: ListTile(
-                  title: Text('${itemValue.first}. ${itemValue[1]}. ${itemValue.last}'),
+                  title: Text(
+                      '${itemValue.first}. ${itemValue[1]}. ${itemValue.last}'),
                 ),
               ),
             );

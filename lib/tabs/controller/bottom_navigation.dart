@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:phalmsapp/help/const.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 import 'package:phalmsapp/help/translations.dart';
-import 'package:tinycolor/tinycolor.dart';
 
 enum TabItem { chapter, words, theme, names, other }
 
@@ -28,9 +27,13 @@ class BottomNavigation extends StatelessWidget {
   final ValueChanged<TabItem> onSelectTab;
   final RouteBus routeBus;
 
-  const BottomNavigation(
-      {Key key, this.currentTab, this.onSelectTab, this.routeBus, })
-      : super(key: key);
+  const BottomNavigation({
+    Key key,
+    this.currentTab,
+    this.onSelectTab,
+    this.routeBus,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     tabName = {

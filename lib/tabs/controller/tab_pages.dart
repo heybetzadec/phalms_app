@@ -1,4 +1,3 @@
-import 'package:event_bus/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 import 'package:phalmsapp/tabs/controller/bottom_navigation.dart';
@@ -17,9 +16,7 @@ class TabPages extends StatelessWidget {
 
   TabPages({this.title, this.onPush, this.tabItem, this.routeBus});
 
-
   Widget widgetTab;
-
 
   @override
   Widget build(BuildContext context) {

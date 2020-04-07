@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BaseAppBar extends StatefulWidget implements PreferredSizeWidget{
+class BaseAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final AppBar appBar;
 
@@ -14,17 +14,20 @@ class BaseAppBar extends StatefulWidget implements PreferredSizeWidget{
   _BaseAppBarState createState() => _BaseAppBarState(title, appBar);
 }
 
-class _BaseAppBarState extends State<BaseAppBar>  {
+class _BaseAppBarState extends State<BaseAppBar> {
   final String title;
   final AppBar appBar;
 
-
   _BaseAppBarState(this.title, this.appBar);
 
-
   final List<String> city_names = [
-    "Aberdeen","classAurora","Austin","Bakersfield","York",
-    "Youngstown"];
+    "Aberdeen",
+    "classAurora",
+    "Austin",
+    "Bakersfield",
+    "York",
+    "Youngstown"
+  ];
 
   String query = '';
 
@@ -36,7 +39,7 @@ class _BaseAppBarState extends State<BaseAppBar>  {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title:  Text(title),
+      title: Text(title),
       actions: <Widget>[
         IconButton(
           icon: const Icon(
@@ -57,9 +60,7 @@ class _BaseAppBarState extends State<BaseAppBar>  {
       ],
     );
   }
-
 }
-
 
 class _MySearchDelegate extends SearchDelegate<String> {
   final List<String> city_names;

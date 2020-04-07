@@ -58,20 +58,22 @@ class _VerseListState extends State<VerseList> {
               ),
               elevation: 1,
               child: new InkWell(
-                onLongPress: (){
-                  Clipboard.setData(new ClipboardData(text: '${itemValue.last} - ${Translations.of(context).text("verse")} $chapterId:${itemValue.first}'));
+                onLongPress: () {
+                  Clipboard.setData(new ClipboardData(
+                      text:
+                          '${itemValue.last} - ${Translations.of(context).text("verse")} $chapterId:${itemValue.first}'));
                   Fluttertoast.showToast(
-                      msg: "${Translations.of(context).text("copied_psalm")} $chapterId:${itemValue.first}",
+                      msg:
+                          "${Translations.of(context).text("copied_psalm")} $chapterId:${itemValue.first}",
                       toastLength: Toast.LENGTH_SHORT,
                       gravity: ToastGravity.CENTER,
                       timeInSecForIosWeb: 1,
                       backgroundColor: Colors.black45,
                       textColor: Colors.white,
-                      fontSize: 16.0
-                  );
+                      fontSize: 16.0);
                 },
                 child: ListTile(
-                  title: Text('${itemValue.first} ${itemValue.last}'),
+                  title: Text('${itemValue.first}. ${itemValue.last}'),
                 ),
               ),
 //                color: Colors.transparent,
@@ -81,6 +83,4 @@ class _VerseListState extends State<VerseList> {
       ),
     );
   }
-
-
 }
