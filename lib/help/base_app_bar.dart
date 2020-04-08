@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:phalmsapp/help/event_key.dart';
 import 'package:phalmsapp/help/route_bus.dart';
 import 'package:phalmsapp/help/translations.dart';
 
@@ -26,15 +27,6 @@ class _BaseAppBarState extends State<BaseAppBar> {
 
   _BaseAppBarState(this.title, this.appBar, this.routeBus);
 
-  final List<String> city_names = [
-    "Aberdeen",
-    "classAurora",
-    "Austin",
-    "Bakersfield",
-    "York",
-    "Youngstown"
-  ];
-
   String query = '';
 
   @override
@@ -54,7 +46,7 @@ class _BaseAppBarState extends State<BaseAppBar> {
           ),
           onPressed: () async {
             final String selected = await showSearch(
-                context: context, delegate: _MySearchDelegate(city_names, routeBus));
+                context: context, delegate: _MySearchDelegate(routeBus));
 
             if (selected != null && selected != query) {
               setState(() {
@@ -69,7 +61,6 @@ class _BaseAppBarState extends State<BaseAppBar> {
 }
 
 class _MySearchDelegate extends SearchDelegate<String> {
-  final List<String> city_names;
   final RouteBus routeBus;
 
 
@@ -77,7 +68,7 @@ class _MySearchDelegate extends SearchDelegate<String> {
 
   List<String> filterName = new List();
 
-  _MySearchDelegate(this.city_names, this.routeBus);
+  _MySearchDelegate( this.routeBus);
 
   @override
   List<Widget> buildActions(BuildContext context) {
