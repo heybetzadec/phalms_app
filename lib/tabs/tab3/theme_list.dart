@@ -79,6 +79,7 @@ class _ThemeListState extends State<ThemeList> {
 
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: Translations.of(context).text("theme"),
         appBar: AppBar(),
       ),

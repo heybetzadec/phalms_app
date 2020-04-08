@@ -41,6 +41,7 @@ class _VersesByThemeState extends State<VersesByTheme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: 'Sura',
         appBar: AppBar(),
       ),

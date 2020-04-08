@@ -39,6 +39,7 @@ class _LetterListState extends State<LetterList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: Translations.of(context).text("words"),
         appBar: AppBar(),
       ),

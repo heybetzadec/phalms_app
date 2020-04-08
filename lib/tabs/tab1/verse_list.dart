@@ -42,6 +42,7 @@ class _VerseListState extends State<VerseList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: Translations.of(context).text("verses"),
         appBar: AppBar(),
       ),
@@ -61,7 +62,7 @@ class _VerseListState extends State<VerseList> {
                 onLongPress: () {
                   Clipboard.setData(new ClipboardData(
                       text:
-                          '${itemValue.last} - ${Translations.of(context).text("verse")} $chapterId:${itemValue.first}'));
+                          '${itemValue.last} - ${Translations.of(context).text("psalm")} $chapterId:${itemValue.first}'));
                   Fluttertoast.showToast(
                       msg:
                           "${Translations.of(context).text("copied_psalm")} $chapterId:${itemValue.first}",

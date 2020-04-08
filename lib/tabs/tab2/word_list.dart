@@ -86,6 +86,7 @@ class _WordListState extends State<WordList> {
 
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: Translations.of(context).text("words"),
         appBar: AppBar(),
       ),

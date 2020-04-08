@@ -82,6 +82,7 @@ class _ChapterListState extends State<ChapterList> {
 
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: Translations.of(context).text("psalms"),
         appBar: AppBar(),
       ),

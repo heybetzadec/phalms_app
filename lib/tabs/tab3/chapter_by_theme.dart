@@ -42,6 +42,7 @@ class _ChapterByThemeState extends State<ChapterByTheme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: 'Sura',
         appBar: AppBar(),
       ),

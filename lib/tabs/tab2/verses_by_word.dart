@@ -46,6 +46,7 @@ class _VersesByWordState extends State<VersesByWord> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: BaseAppBar(
+        routeBus: routeBus,
         title: Translations.of(context).text("psalms"),
         appBar: AppBar(),
       ),
