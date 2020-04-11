@@ -46,14 +46,13 @@ class _MainState extends State<Main> {
         GlobalWidgetsLocalizations.delegate,
       ],
       locale: _locale,
-      //Locale('az'),
       supportedLocales: localeUtil.supportedLocales(),
       localeResolutionCallback:
           (Locale locale, Iterable<Locale> supportedLocales) {
         return locale;
       },
       theme: ThemeData(
-        primarySwatch: Const.primaryColor,
+        primarySwatch: Colors.teal,
       ),
       home: App(),
     );

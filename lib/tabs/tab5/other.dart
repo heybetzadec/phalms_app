@@ -17,6 +17,7 @@ class Other extends StatefulWidget {
 
 class _OtherState extends State<Other> {
   final RouteBus routeBus;
+  int _n = 1;
 
   _OtherState(this.routeBus);
 
@@ -25,6 +26,18 @@ class _OtherState extends State<Other> {
 
   List<DropdownMenuItem<String>> _dropDownMenuItems;
   String _currentLang;
+
+  void add() {
+    setState(() {
+      _n++;
+    });
+  }
+
+  void minus() {
+    setState(() {
+      if (_n != 1) _n--;
+    });
+  }
 
   @override
   void initState() {
@@ -65,7 +78,36 @@ class _OtherState extends State<Other> {
                   onChanged: changedDropDownItem,
                 )
               ],
-            )
+            ),
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(right: 25),
+                  child: new FloatingActionButton(
+                    onPressed: minus,
+                    child: new Icon(
+                        const IconData(0xe15b, fontFamily: 'MaterialIcons'),
+                        color: Colors.black),
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+                new Text('$_n', style: new TextStyle(fontSize: 30.0)),
+                Padding(
+                  padding: EdgeInsets.only(left: 25),
+                  child: new FloatingActionButton(
+                    onPressed: add,
+                    child: new Icon(
+                      Icons.add,
+                      color: Colors.black,
+                    ),
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ],
         )
       ),

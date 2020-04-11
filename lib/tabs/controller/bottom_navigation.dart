@@ -45,7 +45,6 @@ class BottomNavigation extends StatelessWidget {
     };
 
     return BottomNavigationBar(
-      backgroundColor: Colors.white,
       type: BottomNavigationBarType.fixed,
       items: [
         _buildItem(tabItem: TabItem.chapter),
@@ -79,6 +78,6 @@ class BottomNavigation extends StatelessWidget {
   }
 
   Color _colorTabMatching({TabItem item}) {
-    return currentTab == item ? Const.primaryColor : Colors.grey;
+    return currentTab == item ? Colors.teal : Colors.black54;
   }
 }

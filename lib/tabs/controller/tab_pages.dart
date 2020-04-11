@@ -42,13 +42,6 @@ class TabPages extends StatelessWidget {
           );
         }
         break;
-      case TabItem.names:
-        {
-          widgetTab = NameList(
-            routeBus: routeBus,
-          );
-        }
-        break;
       case TabItem.other:
         {
           widgetTab = Other(
